@@ -1,0 +1,5 @@
+{
+  "name": "Multiplayer Chess",
+  "description": "Play chess online with friends or locally. Features real-time sync, move validation, and a classic wooden board design.",
+  "requestFramePermissions": []
+}

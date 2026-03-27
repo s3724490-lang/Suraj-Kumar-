@@ -1,0 +1,35 @@
+{
+  "entities": {
+    "Game": {
+      "title": "Game",
+      "description": "A multiplayer chess game session",
+      "type": "object",
+      "properties": {
+        "whiteId": { "type": "string", "description": "UID of the white player" },
+        "blackId": { "type": "string", "description": "UID of the black player" },
+        "whiteName": { "type": "string", "description": "Display name of the white player" },
+        "blackName": { "type": "string", "description": "Display name of the black player" },
+        "fen": { "type": "string", "description": "Current board state in FEN notation" },
+        "pgn": { "type": "string", "description": "Move history in PGN notation" },
+        "status": { "type": "string", "enum": ["waiting", "active", "finished"], "description": "Game status" },
+        "winner": { "type": "string", "description": "UID of the winner, or 'draw'" },
+        "lastMove": { 
+          "type": "object",
+          "properties": {
+            "from": { "type": "string" },
+            "to": { "type": "string" }
+          }
+        },
+        "createdAt": { "type": "timestamp" },
+        "updatedAt": { "type": "timestamp" }
+      },
+      "required": ["whiteId", "whiteName", "fen", "pgn", "status", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "games/{gameId}": {
+      "schema": { "$ref": "#/entities/Game" },
+      "description": "Active and finished chess games"
+    }
+  }
+}
